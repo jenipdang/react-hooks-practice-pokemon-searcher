@@ -34,12 +34,15 @@ function PokemonPage() {
       setSearchResult(pokemon)
     }
   }
+  const handleNewPokemon = (newPokee) => {
+    return setPokemon([...pokemon, newPokee])
+  }
 
   return (
     <Container>
       <h1>Pokemon Searcher</h1>
       <br />
-      <PokemonForm />
+      <PokemonForm handleNewPokemon={handleNewPokemon}/>
       <br />
       <Search pokemon={pokemon} term={search} searchKeyword={searchHandler} />
       <br />

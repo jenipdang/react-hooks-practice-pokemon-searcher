@@ -2,25 +2,25 @@ import React, {useState} from "react";
 import { Form } from "semantic-ui-react";
 
 
-const PokemonForm = () => {
+const PokemonForm = ({handleNewPokemon}) => {
   const [name, setName] = useState("")
   const [hp, setHp] = useState("")
   const [front, setFrontUrl] = useState("")
   const [back, setBackUrl] = useState("")
-  const [isPending, setIsPending] = useState(false)
+ 
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    e.target.reset()
     const newPokee = { name, hp, sprites: {front, back} }
 
     fetch('http://localhost:3001/pokemon',{
       method: 'POST',
       headers: { "Content-type": "application/json" },
       body: JSON.stringify(newPokee)
-    }).then(() => {
-      setIsPending(false)
     })
+    .then((r) => r.json())
+    .then(handleNewPokemon)
+    
+    e.target.reset()
   }
 
   return (
@@ -62,8 +62,7 @@ const PokemonForm = () => {
             name="backUrl"
           />
         </Form.Group>
-       {!isPending && <Form.Button>Submit</Form.Button>}
-       {isPending && <Form.Button>Submiting....</Form.Button>}
+       <Form.Button>Submit</Form.Button>
       </Form>
     </div>
   );
