@@ -10,9 +10,10 @@ function PokemonPage() {
   const [searchResult, setSearchResult] = useState([])
 
 
+
   useEffect(() => {
     fetch ('http://localhost:3001/pokemon')
-    .then (r => r.json())
+    .then (res => res.json())
     .then((pokeData) => {
       setPokemon(pokeData)
     }).catch((err) => {
@@ -34,6 +35,24 @@ function PokemonPage() {
     } else {
       setSearchResult(pokemon)
     }
+
+    //add new Pokemon
+    // const handleAddNewPokemon = async (pokee) => {
+    //   const res = await fetch ('http://localhost:3001/pokemon', {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-type': 'application/json'
+    //     },
+    //     body: JSON.stringify(pokee)
+    //   })
+    //   const data = await res.json()
+    //   setNewPokemonCollection([...pokemon, data])
+    // }
+
+    // const handleSubmit = (pokemon) => {
+    //   const pokeeWithId = {...pokemon, id: pokemon.slice(-1)[0].id + 1}
+    //   setPokemon(currentPokemon => [...currentPokemon, pokeeWithId])
+    // }
   }
 
   return (
@@ -44,7 +63,7 @@ function PokemonPage() {
       <br />
       <Search pokemon={pokemon} term={search} searchKeyword={searchHandler} />
       <br />
-      <PokemonCollection pokemon={search.length < 1 ? pokemon : searchResult}/>
+      <PokemonCollection pokemon={search.length < 1 ? pokemon : searchResult} />
       {/* passing the condition for the search. If search input and the lenght is < 1, then pass the pokeman. If not, pass the search result */}
 
     </Container>
