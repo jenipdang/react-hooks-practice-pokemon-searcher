@@ -9,8 +9,6 @@ function PokemonPage() {
   const [search, setSearch] = useState("")
   const [searchResult, setSearchResult] = useState([])
 
-
-
   useEffect(() => {
     fetch ('http://localhost:3001/pokemon')
     .then (res => res.json())
@@ -35,24 +33,6 @@ function PokemonPage() {
     } else {
       setSearchResult(pokemon)
     }
-
-    //add new Pokemon
-    // const handleAddNewPokemon = async (pokee) => {
-    //   const res = await fetch ('http://localhost:3001/pokemon', {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-type': 'application/json'
-    //     },
-    //     body: JSON.stringify(pokee)
-    //   })
-    //   const data = await res.json()
-    //   setNewPokemonCollection([...pokemon, data])
-    // }
-
-    // const handleSubmit = (pokemon) => {
-    //   const pokeeWithId = {...pokemon, id: pokemon.slice(-1)[0].id + 1}
-    //   setPokemon(currentPokemon => [...currentPokemon, pokeeWithId])
-    // }
   }
 
   return (
