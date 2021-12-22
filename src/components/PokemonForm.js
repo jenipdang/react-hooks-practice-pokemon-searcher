@@ -10,6 +10,12 @@ const PokemonForm = ({handleNewPokemon}) => {
  
 
   const handleSubmit = (e) => {
+    e.preventDefault()
+    if (name.trim() === "" || front.trim() === "" || hp.trim() === "" || back.trim() === ""){
+      alert("Please Fill Out All Fields") //
+      return null
+    }
+
     const newPokee = { name, hp, sprites: {front, back} }
 
     fetch('http://localhost:3001/pokemon',{
@@ -19,8 +25,14 @@ const PokemonForm = ({handleNewPokemon}) => {
     })
     .then((r) => r.json())
     .then(handleNewPokemon)
-    
-    e.target.reset()
+    .catch((err) => {
+      console.err("Error:", err)
+    })
+
+    setName("")
+    setBackUrl("")
+    setFrontUrl("")
+    setHp("")
   }
 
   return (

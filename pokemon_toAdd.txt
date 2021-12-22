@@ -1,10 +1,16 @@
 meowone
-35
+100
 https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/151.png
 https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/151.png
 
 
 chikorita
-30
+45
 https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/152.png
 https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/152.png
+
+
+bayleef
+60
+https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/153.png
+https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/153.png
